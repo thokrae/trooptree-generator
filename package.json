@@ -14,11 +14,13 @@
     "Mount & Blade"
   ],
   "author": "Thomas Krämer",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/thokrae/trooptree-generator/issues"
   },
   "homepage": "https://github.com/thokrae/trooptree-generator#readme",
   "devDependencies": {
-    "electron-prebuilt": "^0.37.8"
+    "electron-prebuilt": "^0.37.8",
+    "jasmine-core": "2.4.1"
   }
 }

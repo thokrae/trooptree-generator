@@ -1,25 +1,35 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
+
 let holder = document.getElementById('holder');
 holder.ondragover = function () {
     return false;
 };
+
 holder.ondragleave = holder.ondragend = function () {
     return false;
 };
+
 holder.ondrop = function (e) {
     e.preventDefault();
     var file = e.dataTransfer.files[0];
     console.log('File you dragged here is', file.path);
+
     var fs = require('fs');
     fs.readFile(file.path, 'utf8', function (err, data) {
-        if (err)
-            return console.log(err);
+        if (err) return console.log(err);
+
         console.log(data);
     });
+
     return false;
 };
-function loadTroopData(input) {
+
+interface TroopData {
+
+}
+
+function loadTroopData(input: String): TroopData {
     return null;
 }
