@@ -1,2 +1,5 @@
 node_modules
 .idea
+build/loader.js
+build/renderer.js
+
