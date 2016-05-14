@@ -8,7 +8,7 @@ it('should load version 1 troop entry', function(){
     + "274 131072 0 1 0 0\n" //
     + "17179869185 1315051091194281984 1835136 0 50465891015 7916447985573822463 2031036 0 ";  
 
-    var result = getTroopData(entry);
+    var result = loader.getTroopData(entry);
     
     var expected = {
          name: 'trp_swadian_militia',

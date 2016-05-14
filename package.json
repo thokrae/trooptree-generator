@@ -4,7 +4,7 @@
   "description": "A tool for visualizing troop trees from the game \"Mount & Blade\"",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron build/main.js"
   },
   "repository": {
     "type": "git",
