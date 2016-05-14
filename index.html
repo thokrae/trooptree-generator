@@ -10,36 +10,11 @@
   <div id="holder">
     Drag your file here
   </div>
-
-  <script>
-    var holder = document.getElementById('holder');
-  holder.ondragover = function () {
-    return false;
-  };
-  holder.ondragleave = holder.ondragend = function () {
-    return false;
-  };
-  holder.ondrop = function (e) {
-    e.preventDefault();
-    var file = e.dataTransfer.files[0];
-    console.log('File you dragged here is', file.path);
-    
-    var fs = require('fs');
-fs.readFile(file.path, 'utf8', function (err, data) {
-  if (err) return console.log(err);
-  
-  console.log(data);
-});
-    
-    return false;
-  };
-  </script>
 </body>
 
 <script>
   // You can also require other files to run in this process
     require('./renderer.js')
-
 </script>
 
 </html>
