@@ -1,27 +1,23 @@
 {
-  "name": "electron-quick-start",
+  "name": "trooptree-generator",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A tool for visualizing troop trees from the game \"Mount & Blade\"",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron/electron-quick-start.git"
+    "url": "git+https://github.com/thokrae/trooptree-generator.git"
   },
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial"
+    "Mount & Blade"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "Thomas Krämer",
   "bugs": {
-    "url": "https://github.com/electron/electron-quick-start/issues"
+    "url": "https://github.com/thokrae/trooptree-generator/issues"
   },
-  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "homepage": "https://github.com/thokrae/trooptree-generator#readme",
   "devDependencies": {
     "electron-prebuilt": "^0.37.8"
   }
