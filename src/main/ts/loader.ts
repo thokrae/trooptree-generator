@@ -1,30 +1,72 @@
-module loader {
+export module loader {
 
     interface TroopData {
-        name: String;
-        displayName: String;
-        displayNamePlural: String;
-        factionId: String;
-        flags: Number;
-        upgrade1: Number;
-        upgrade2: Number;
-        // strength: Number;
-        // agility: Number;
-        // intelligence: Number;
-        // charisma: Number;
-        // level: Number;
-        // prof1h: Number;
-        // prof2h: Number;
-        // profPolearms: Number;
-        // profArcher: Number;
-        // profCrossbow: Number;
-        // profThrowing: Number;
-        // profFire: Number;
+        name: string;
+        displayName: string;
+        displayNamePlural: string;
+        factionId: string;
+        flags: number;
+        upgrade1: number;
+        upgrade2: number;
+        // strength: number;
+        // agility: number;
+        // intelligence: number;
+        // charisma: number;
+        // level: number;
+        // prof1h: number;
+        // prof2h: number;
+        // profPolearms: number;
+        // profArcher: number;
+        // profCrossbow: number;
+        // profThrowing: number;
+        // profFire: number;
     }
 
-    export function getTroopData(input: String): TroopData {
+    interface TroopDataCollection {
+        [index: number]: TroopData;
+    }
+
+    export function getTroopData(input: string) {
+        console.log('starting to parse troop data');
+
+        let lines = input.split('\n');
+
+        if (lines.length < 1)
+            throw 'invalid troop file';
+
+        let version = getVersion(lines[0]);
+        console.log('detected version: ' + version);
+
+        let troopCount = parseInt(lines[1], 10);
+        console.log('expecting ' + troopCount + ' entries');
+
+        let result: TroopDataCollection = {};
+        for (let troopId = 0; troopId < troopCount; ++troopId)
+            result[troopId] = getTroopDataEntry(getNext6Lines(lines, troopId));
+
+        console.log('finished parsing troop data');
+
+        return result;
+    }
+
+    function getVersion(input: string): number {
+        if (input === 'troopsfile version 1')
+            return 1;
+        if (input === 'troopsfile version 2')
+            return 2;
+        throw 'found invalid or not supported troop file';
+    }
+
+    function getNext6Lines(lines: string[], troopId: number) {
+        var result: string[] = [];
+        for (let i = 0; i < 6; ++i)
+            result.push(lines[troopId * 7 + i + 2]);
+        return result;
+    }
+
+    export function getTroopDataEntry(input: string[]): TroopData {
         let lines: string[][] = [];
-        input.split('\n').forEach((line, i) => lines.push(line.split(' ')));
+        input.forEach((line, i) => lines.push(line.split(' ')));
 
         if (lines.length != 6)
             throw 'incomplete troop data: unexpected line count';
